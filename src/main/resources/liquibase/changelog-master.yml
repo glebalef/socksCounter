@@ -1,0 +1,3 @@
+DatabaseChangeLog:
+  - include:
+      file: liquibase/scripts/sockdb.sql
