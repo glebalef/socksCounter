@@ -16,15 +16,6 @@ public class Socks {
     private String color;
     private int cottonPart;
 
-//    public Socks(String color, int cottonPart) throws Exception {
-//        if (cottonPart<0) {
-//            throw new Exception("cotton part should be more than 0");
-//        }
-//        if (cottonPart>100) {
-//            throw new Exception("cotton part cannot be more than 100");
-//        }
-//    }
-
     public Socks() {
     }
 
