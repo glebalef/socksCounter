@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @GetMapping
     public String helloWorld () {
-        return "Добро пожаловать в программк обработки и учета носочно-чулочных изделий 'SocksMaster-2000'!";
+        return "Добро пожаловать в программку обработки и учета носочно-чулочных изделий 'SocksMaster-2000'!";
     }
 }
