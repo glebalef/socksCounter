@@ -1,11 +1,10 @@
 package com.socks.socksCounter.service;
 
-import com.socks.socksCounter.constant.Operator;
+import com.socks.socksCounter.constant.Operation;
 import com.socks.socksCounter.entity.Socks;
 import com.socks.socksCounter.entity.Stock;
 import com.socks.socksCounter.exceptions.NegativeStockException;
 import com.socks.socksCounter.exceptions.NoSuchItemException;
-import com.socks.socksCounter.exceptions.WrongDataProvidedException;
 import com.socks.socksCounter.repository.SocksRepository;
 import com.socks.socksCounter.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,12 +63,12 @@ public class StockService {
         }
     }
 
-    public int getStock(String color, int cotton, Operator operator) {
+    public int getStock(String color, Operation operation, int cotton) {
 
         int quantity = 0;
         List<Stock> stocks = null;
 
-        switch (operator) {
+        switch (operation) {
             case equal -> {
                 stocks = stockRepository.findBySocksCottonPartAndSocksColor(cotton, color);
             }
