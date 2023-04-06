@@ -43,8 +43,10 @@ public class stockController {
     @GetMapping (value = "/socks")
     public int getStock (@RequestParam String color,
                          @RequestParam int cotton,
-                         @RequestParam Operator operator) {
-
+                         @RequestParam Operator operator) throws WrongDataProvidedException {
+        if (cotton<0) {
+            throw new WrongDataProvidedException();
+        }
       return   stockService.getStock(color,cotton,operator);
     }
 }
