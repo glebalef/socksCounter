@@ -1,6 +1,6 @@
 package com.socks.socksCounter.service;
 
-import com.socks.socksCounter.constant.Operator;
+import com.socks.socksCounter.constant.Operation;
 import com.socks.socksCounter.entity.Socks;
 import com.socks.socksCounter.entity.Stock;
 import com.socks.socksCounter.exceptions.NegativeStockException;
@@ -53,7 +53,7 @@ public class StockService {
             Stock stock = stockRepository
                     .findBySocks(socksRepository
                             .findByCottonPartAndColor(cotton, color));
-            Integer newQuantity = stock.getQuantity() - quantity;
+            int newQuantity = stock.getQuantity() - quantity;
             if (newQuantity < 0) {
                 throw new NegativeStockException();
             } else {
@@ -63,21 +63,18 @@ public class StockService {
         }
     }
 
-    public int getStock(String color, int cotton, Operator operator) {
+    public int getStock(String color, Operation operation, int cotton) {
 
         int quantity = 0;
         List<Stock> stocks = null;
 
-        switch (operator) {
+        switch (operation) {
             case equal -> {
-                stocks = stockRepository.findBySocksCottonPartAndSocksColor(cotton, color);
-            }
+                stocks = stockRepository.findBySocksCottonPartAndSocksColor(cotton, color);}
             case moreThan -> {
-                stocks = stockRepository.findBySocksCottonPartGreaterThanAndSocksColor(cotton, color);
-            }
+                stocks = stockRepository.findBySocksCottonPartGreaterThanAndSocksColor(cotton, color);}
             case lessThan -> {
-                stocks = stockRepository.findBySocksCottonPartLessThanAndSocksColor(cotton, color);
-            }
+                stocks = stockRepository.findBySocksCottonPartLessThanAndSocksColor(cotton, color);}
         }
 
         for (Stock s : stocks) {
@@ -85,7 +82,6 @@ public class StockService {
         }
         return quantity;
     }
-
 }
 
 
